@@ -5,7 +5,6 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/crdueck/interface-demo/service"
 	"github.com/crdueck/interface-demo/storage"
 	"github.com/julienschmidt/httprouter"
 )
@@ -15,10 +14,10 @@ func parseInt64Param(ps httprouter.Params, name string) (int64, error) {
 }
 
 type Controller struct {
-	service service.KeyValueService
+	service KeyValueService
 }
 
-func newController(svc service.KeyValueService) *Controller {
+func newController(svc KeyValueService) *Controller {
 	return &Controller{
 		service: svc,
 	}

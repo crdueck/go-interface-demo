@@ -6,11 +6,6 @@ var (
 	ErrNotFound = errors.New("not found")
 )
 
-type KeyValueStore interface {
-	Get(int64) (string, error)
-	Put(int64, string) error
-}
-
 type DB struct {
 	values map[int64]string
 }

@@ -3,11 +3,15 @@ package api
 import (
 	"net/http"
 
-	"github.com/crdueck/interface-demo/service"
 	"github.com/julienschmidt/httprouter"
 )
 
-func New(svc service.KeyValueService) http.Handler {
+type KeyValueService interface {
+	GetString(int64) (string, error)
+	PutString(int64, string) error
+}
+
+func New(svc KeyValueService) http.Handler {
 	c := newController(svc)
 	r := httprouter.New()
 

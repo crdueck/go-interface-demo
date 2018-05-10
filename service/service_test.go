@@ -3,7 +3,6 @@ package service
 import (
 	"testing"
 
-	"github.com/crdueck/interface-demo/storage"
 	"github.com/golang/mock/gomock"
 )
 
@@ -14,7 +13,7 @@ func TestServiceGetWhatYouPut(t *testing.T) {
 	testKey := int64(42)
 	testVal := "hello"
 
-	kvs := storage.NewMockKeyValueStore(ctrl)
+	kvs := NewMockKeyValueStore(ctrl)
 	kvs.EXPECT().Put(testKey, testVal).Return(nil)
 	kvs.EXPECT().Get(testKey).Return(testVal, nil)
 
